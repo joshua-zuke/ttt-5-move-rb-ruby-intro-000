@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/move.rb'
+puts "Welcome to Tic Tac Toe!"
+board = [" "," "," "," "," "," "," "," "," "]
+puts "Which player are you? You can type 'X' or 'O'."
+current_player = gets.strip
+if current_player == "X"
+  puts "Thanks, #{current_player}. Where would you like to go?"
+  puts "Please enter 1-9:"
+  user_input = gets.strip
+  index = input_to_index(user_input)
+  move(board, index, current_player)
+  display_board(board)
+elsif current_player == "O"
+  puts "Thanks, #{current_player}. Where would you like to go?"
+  puts "Please enter 1-9:"
+  user_input = gets.strip
+  index = input_to_index(user_input)
+  move(board, index, current_player)
+  display_board(board)
+else
+  puts "Invalid selection, please choose 'X' or 'O'." #Even though I'm saying this is invalid it doesn't start us back at the top, it just moves on.
+end
+
+
+puts "Whose turn is it now?" # Need to make this binary and automatic so if turn 1 was X turn 2 is always O and vice versa.
+current_player = gets.strip # Shouldn't have to have this line at all if above comment is true.
+puts "Thanks, #{current_player}. Where would you like to go?"
+puts "Please enter 1-9:"
+user_input = gets.strip # Needs to be validated so that it can't be equal to the previous value or anything below 1 / above 9.
+index = input_to_index(user_input)
+move(board, index, current_player)
+display_board(board)
+
+# Need to define winning conditions.
